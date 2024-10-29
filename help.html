@@ -1,28 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help Center</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    /* Container styling */
+    .help-center-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .help-center-container h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #6a11cb;
+    }
+
+    .help-center-container p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* FAQ section */
+    .faq {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    /* FAQ card styling */
+    .faq-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      margin: 10px 0;
+      padding: 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .faq-card:hover {
+      background: #f1f1f1;
+    }
+
+    /* FAQ question and answer */
+    .faq-question {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 10px;
+      color: #555;
+      line-height: 1.5;
+      border-top: 1px solid #ddd;
+      margin-top: 10px;
+    }
+
+    /* Expand/Collapse Icon */
+    .icon {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      color: #6a11cb;
+      transition: transform 0.3s;
+    }
+
+    .expanded .icon {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .expanded .faq-answer {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Help Center</h1>
-        <p>If you have any questions or need assistance, please fill out the form below:</p>
-        <form action="mailto:kemetica.egy@gmail.com" method="post" enctype="text/plain">
-            <label for="name">Your Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+  <div class="help-center-container">
+    <h1>Help Center</h1>
+    <p>Find answers to frequently asked questions or get in touch for further assistance.</p>
 
-            <label for="email">Your Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+    <div class="faq">
+      <div class="faq-card" onclick="toggleFAQ(this)">
+        <div class="faq-question">How can I reset my password?</div>
+        <div class="faq-answer">
+          To reset your password, go to the login page, click on "Forgot Password," and follow the instructions sent to your email.
+        </div>
+        <div class="icon">▼</div>
+      </div>
 
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br><br>
+      <div class="faq-card" onclick="toggleFAQ(this)">
+        <div class="faq-question">Where can I find my order details?</div>
+        <div class="faq-answer">
+          You can view your order details in the "My Orders" section under your account profile.
+        </div>
+        <div class="icon">▼</div>
+      </div>
 
-            <input type="submit" value="Send">
-            <input type="reset" value="Reset">
-        </form>
+      <div class="faq-card" onclick="toggleFAQ(this)">
+        <div class="faq-question">How do I contact customer support?</div>
+        <div class="faq-answer">
+          To reach our support team, go to the "Contact Us" section or send an email to support@example.com.
+        </div>
+        <div class="icon">▼</div>
+      </div>
     </div>
+  </div>
+
+  <script>
+    function toggleFAQ(faqCard) {
+      faqCard.classList.toggle("expanded");
+    }
+  </script>
 </body>
 </html>
