@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feedback</title>
   <style>
+      <style>
     /* Reset some default styles */
     * {
       box-sizing: border-box;
@@ -87,15 +88,35 @@
       }
     }
   </style>
+  </style>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("-dIXo67dl_EeW_Eub"); // Replace "YOUR_USER_ID" with your EmailJS user_id
+    })();
+
+    function sendFeedback(event) {
+      event.preventDefault();
+      emailjs.send("service_axwqvf7", "template_3a2843c", {
+        from_name: document.getElementById("name").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      }).then(function(response) {
+        alert("Feedback sent successfully!");
+      }, function(error) {
+        alert("Failed to send feedback. Please try again.");
+      });
+    }
+  </script>
 </head>
 <body>
   <div class="feedback-container">
     <h1>We Value Your Feedback</h1>
     <p>Please let us know what you think about our services.</p>
-    <form action="#" method="post">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="6" placeholder="Write your feedback here..." required></textarea>
+    <form onsubmit="sendFeedback(event)">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="6" placeholder="Write your feedback here..." required></textarea>
       <button type="submit">Submit Feedback</button>
     </form>
   </div>
